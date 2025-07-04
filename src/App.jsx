@@ -12,13 +12,13 @@ function App() {
       <header className="flex justify-between bg-black text-white p-8">
         <h1>glow cosmetics</h1>
        <div className="flex gap-4">
-        <Link to='home' className="hover:underline">Home</Link>
-        <Link to='products' className="hover:underline">Products</Link>
-        <Link to='cart' className="hover:underline">Cart</Link>
+        <Link to='home' className="hover:underline focus:underline active:underline">Home</Link>
+        <Link to='products' className="hover:underline focus:underline active:underline">Products</Link>
+        <Link to='cart' className="hover:underline focus:underline active:underline">Cart</Link>
        </div>
       </header>
 
-      <main className="flex-1 flex flex-col justify-center items-center">
+      <main className="flex-1 ">
        <Outlet/>
       </main>
       <footer className="flex justify-center">
