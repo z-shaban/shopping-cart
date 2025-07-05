@@ -1,13 +1,16 @@
 import { ProductCard } from "./productCard"
 import { useState, useEffect } from "react"
-import { Cart } from "./cart";
+
+
 
 
 export function Products(){
-const [products, setProducts] = useState(null);
+const [products, setProducts] = useState([]);
 const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true)
-const [cart, setCart] = useState([])
+
+
+
 
 useEffect(()=>{
     fetch('https://dummyjson.com/products/category/skin-care')
@@ -41,7 +44,7 @@ return(
     <div className="flex flex-col gap-4 items-center min-h-screen pt-4">
     <h1>PRODUCTS</h1>
     <div className="flex gap-8">
-          {products.map((product)=>(<ProductCard key={product.id} card={product} setCart={setCart}/>))}
+          {products.map((product)=>(<ProductCard key={product.id} card={product}/>))}
          
     </div>
    

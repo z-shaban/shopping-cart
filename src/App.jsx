@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { useState } from "react";
+
 
 
 function App() {
-  
+  const [cart, setCart] = useState([]);
 
   return (
     <>
@@ -19,7 +21,7 @@ function App() {
       </header>
 
       <main className="flex-1 ">
-       <Outlet/>
+       <Outlet context={{cart, setCart}} />
       </main>
       <footer className="flex justify-center">
         <p>@2025</p>
