@@ -17,6 +17,7 @@ function App() {
         <Link to='home' className="hover:underline focus:underline active:underline">Home</Link>
         <Link to='products' className="hover:underline focus:underline active:underline">Products</Link>
         <Link to='cart' className="hover:underline focus:underline active:underline">Cart</Link>
+        <span>{cart.length}</span>
        </div>
       </header>
 

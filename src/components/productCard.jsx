@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 
 
 export function ProductCard({card}){
-  const {cart, setCart} = useOutletContext();
+  const {setCart} = useOutletContext();
    
   
   const addToCart = (clickedProduct) => {
@@ -16,7 +16,7 @@ export function ProductCard({card}){
       cartProduct.id === clickedProduct.id?{...cartProduct, quantity: cartProduct.quantity + 1}: cartProduct
      )
     } else{
-      return [...prevCart, clickedProduct]
+      return [...prevCart,  { ...clickedProduct, quantity: 1 }]
     }
 
    })
@@ -34,6 +34,7 @@ export function ProductCard({card}){
       <button onClick={()=> addToCart(card)} className="border-2 border-black bg-black text-white p-1 rounded hover:bg-white hover:text-black ">
         ADD TO CART
       </button>
+      
     </div>
     </> 
 }

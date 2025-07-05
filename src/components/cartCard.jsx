@@ -1,25 +1,46 @@
 
-import { useState } from "react"
+import { useOutletContext } from "react-router-dom";
 
 export function CartCard({card}){
-const [quantity, setQuantity] = useState(1);
+const {setCart} = useOutletContext();
+
+
 const handleIncrement= ()=>{
-    setQuantity(quantity + 1)
+   setCart(prevCart =>
+    prevCart.map(item =>
+      item.id === card.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    )
+  );
   }
 
   const handleDecrement = ()=>{
-    if(quantity > 1){
-      setQuantity(quantity - 1)
-    }
+   if (card.quantity > 1) {
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === card.id
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  } else {
+    setCart(prevCart => prevCart.filter(item => item.id !== card.id));
+  }
   }
   
 
   return <>
     <div className="border-2 border-black p-4  rounded mb-4">
-        <p>{card.name} </p>
-        <p>${card.price} </p>
+        
+        <img className="w-20 h-20" src={card.image} alt="" />
+          <div>{card.title}</div>
+          <div>${card.price * card.quantity}</div>
+    
+      
+
         <button onClick={handleIncrement} className="border-2 border-black bg-black text-white p-1 rounded hover:bg-white hover:text-black mr-4 ">+</button>
-        <p>{quantity} </p>
+        <p>{card.quantity} </p>
         <button onClick={handleDecrement} className="border-2 border-black bg-black text-white p-1 rounded hover:bg-white hover:text-black ">-</button>
     </div>
   </>

@@ -26,7 +26,7 @@ useEffect(()=>{
             title: product.title,
             price : product.price,
             image: product.images[0],
-            quantity: 1
+           
         }))
         setProducts(myProducts)
     })
